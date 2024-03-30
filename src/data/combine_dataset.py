@@ -2,6 +2,8 @@ import json
 import os
 import pandas as pd
 
+import sys
+
 scam_profile_path_1 = os.path.join("..", "..", "data")
 scam_profile_path_2 = os.path.join("..", "..", "data")
 
@@ -30,9 +32,14 @@ def merge(output_path, *folder_paths):
     merged_df.to_csv(output_path, index=False, encoding="utf-8")
 
 if __name__ == "__main__":
-    output_path = os.path.join("..", "..", "data", "merged_dataset.csv")
-    scam_profile_path_2012_2015 = os.path.join("..", "..", "data", "scam_profiles_2012_2015")
-    scam_profile_path_2016_2020 = os.path.join("..", "..", "data", "scam_profiles_2016_2020")
+    # run script
+    # python combine_dataset.py [output_path] [folder_path_1] [folder_path_2] [folder_path_3] ...
+
+    # example
+    # python combine_dataset.py ../../data/real_profiles.csv ../../data/real_profiles_1 ../../data/real_profiles_2 ../../data/real_profiles_3
+
+    output_path = sys.argv[1]
+    folder_paths = sys.argv[2:]
 
     # input folder paths with data to be merged
-    merge(output_path, scam_profile_path_2012_2015, scam_profile_path_2016_2020)
+    merge(output_path, *folder_paths)
