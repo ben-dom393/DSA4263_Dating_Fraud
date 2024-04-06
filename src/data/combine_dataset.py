@@ -4,13 +4,6 @@ import pandas as pd
 
 import sys
 
-scam_profile_path_1 = os.path.join("..", "..", "data")
-scam_profile_path_2 = os.path.join("..", "..", "data")
-
-# read all json files from scam_profile_path_1
-scam_profile_files_1 = [os.path.join(scam_profile_path_1, f) for f in os.listdir(scam_profile_path_1)]
-
-
 def create_dataframe(profiles):
     data = []
     for profile in profiles:
