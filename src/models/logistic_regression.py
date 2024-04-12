@@ -24,18 +24,20 @@ X_test_combined = np.hstack([X_test_ohe.toarray(), X_test_bow.toarray()])
 
 # predict
 y_pred = LR.predict(X_test_combined)
-y_pred_proba = LR.predict_proba(X_test_combined)[:,1]
+y_pred_proba = LR.predict_proba(X_test_combined)[:,1:]
 
-# calculate metrics
-results = [accuracy_score(y_test, y_pred), precision_score(y_test, y_pred), recall_score(y_test, y_pred), f1_score(y_test, y_pred), roc_auc_score(y_test, y_pred_proba)]
+print(y_pred_proba)
 
-# print results
-print("Accuracy: {:.2f}".format(results[0]))
-print("Precision: {:.2f}".format(results[1]))
-print("Recall: {:.2f}".format(results[2]))
-print("F1: {:.2f}".format(results[3]))
-print("ROC-AUC: {:.2f}".format(results[4]))
+# # calculate metrics
+# results = [accuracy_score(y_test, y_pred), precision_score(y_test, y_pred), recall_score(y_test, y_pred), f1_score(y_test, y_pred), roc_auc_score(y_test, y_pred_proba)]
 
-# print confusion matrix
-print("\nConfusion Matrix:")
-print(confusion_matrix(y_test, y_pred))
+# # print results
+# print("Accuracy: {:.2f}".format(results[0]))
+# print("Precision: {:.2f}".format(results[1]))
+# print("Recall: {:.2f}".format(results[2]))
+# print("F1: {:.2f}".format(results[3]))
+# print("ROC-AUC: {:.2f}".format(results[4]))
+
+# # print confusion matrix
+# print("\nConfusion Matrix:")
+# print(confusion_matrix(y_test, y_pred))
