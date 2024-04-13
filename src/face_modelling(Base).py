@@ -10,9 +10,12 @@ from tensorflow.keras.preprocessing.image import img_to_array, load_img
 import tensorflow.keras.utils
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+'''
 # Set TensorFlow to use the GPU
 physical_devices = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_devices[0], True)
+'''
 
 # Ensure proper backend setup for matplotlib in non-interactive environments
 plt.switch_backend('agg')
