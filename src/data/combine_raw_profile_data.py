@@ -1,3 +1,5 @@
+### Combine raw profile data from multiple folders into a single CSV file
+
 import json
 import os
 import pandas as pd
