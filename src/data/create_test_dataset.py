@@ -82,8 +82,13 @@ test_profiles.loc[fake_profiles_for_real_images_idx, 'face_fake'] = 0
 test_profiles.loc[fake_profiles_for_fake_images_idx, 'image_path'] =\
     fake_image_for_fake_profiles
 test_profiles.loc[fake_profiles_for_fake_images_idx, 'face_fake'] = 1
+# ------------------------------ #
 
-# print(test_profiles.groupby(['scam', 'face_fake']).size())
+
+# drop rows with missing values
+final_test_dataset = test_profiles.dropna(axis=0, how='any')
+
+# # print(test_profiles.groupby(['scam', 'face_fake']).size())
 
 # save to csv
-test_profiles.to_csv("../../data/processed/final_test_dataset.csv", index=False)
+final_test_dataset.to_csv("../../data/processed/final_test_dataset.csv", index=False)
