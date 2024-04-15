@@ -57,6 +57,9 @@ if __name__ == "__main__":
     # For example, if the profile model is more reliable:
     weighted_combined_prob = 0.4 * profile_pred_prob + 0.6 * face_pred_prob
 
+    # As both models are performing well, an OR gate can be set up to give a binary classification the predicted labels
+    predicted_labels = np.where((profile_pred_prob > 0.5) | (face_pred_prob > 0.5), 1, 0)
+
     # Output combined results
     results_df = pd.DataFrame({
         'true_profile_scam': df['scam'],
@@ -64,7 +67,9 @@ if __name__ == "__main__":
         'true_face_fake': df['face_fake'],
         'face_prob': face_pred_prob,
         'combined_prob': combined_prob,
-        'weighted_prob': weighted_combined_prob
+        'weighted_prob': weighted_combined_prob,
+        'predicted_label': predicted_labels
+
     })
     results_df.to_csv(os.path.join(args.output_path, "results.csv"), index=False)
 
