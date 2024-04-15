@@ -27,7 +27,7 @@ for subfolder in os.listdir(real_path):
             for img in glob.glob(os.path.join(full_path, file_extension)):
                 images_df["image_path"].append(img)
                 images_df["label"].append('real')
-            
+
 # Process fake images
 count = 0
 for file_extension in ["*.jpg", "*.png"]:
@@ -71,12 +71,15 @@ def preprocess_pipeline(image_path: str, size: tuple[int, int] = (128, 128)) -> 
         return None
 
 def save_preprocessed_image(image_tensor, save_path, image_name):
-    os.makedirs(save_path, exist_ok=True)
-    save_full_path = os.path.join(save_path, image_name)
-    # Convert tensor to PIL Image to save
-    image_tensor = image_tensor.cpu().clone()  # Move to CPU and clone tensor
-    image = transforms.ToPILImage()(image_tensor)
-    image.save(save_full_path)
+    if image_tensor is not None:
+        os.makedirs(save_path, exist_ok=True)
+        save_full_path = os.path.join(save_path, image_name)
+        # Convert tensor to PIL Image to save
+        image_tensor = image_tensor.cpu().clone()  # Move to CPU and clone tensor
+        image = transforms.ToPILImage()(image_tensor)
+        image.save(save_full_path)
+    else:
+        print(f"Skipping saving for {image_name} as preprocessing failed")
 
 save_directory_real = 'data/interim/face_processed/real'
 save_directory_fake = 'data/interim/face_processed/fake'
@@ -87,8 +90,11 @@ for index, row in images_df.iterrows():
         size=(128, 128),
     )
     image_name = os.path.basename(row['image_path'])
-    if row['label'] == 'real':
-        save_preprocessed_image(preprocessed_image, save_directory_real, image_name)
+    if preprocessed_image is not None:
+        if row['label'] == 'real':
+            save_preprocessed_image(preprocessed_image, save_directory_real, image_name)
+        else:
+            save_preprocessed_image(preprocessed_image, save_directory_fake, image_name)
+            print(f"Processed and saved {image_name}")
     else:
-        save_preprocessed_image(preprocessed_image, save_directory_fake, image_name)
-    print(f"Processed and saved {image_name}")
+        print(f"Failed to process {image_name}")
