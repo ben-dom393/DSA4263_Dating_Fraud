@@ -50,6 +50,8 @@ $ pip install -r requirements
 ``` bash
 python src/models/final_model.py <path/to/dataset> [--output_path path/to/output/dir/]
 ```
+
+eg.
 ``` bash
 python src/models/final_model.py data/processed/final_test_dataset.csv
 ```
