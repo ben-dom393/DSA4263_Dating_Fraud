@@ -1,6 +1,6 @@
 lib/
 bin/
-data/raw/
+data/
 *.cfg
 *.json
 *Zone.Identifier
