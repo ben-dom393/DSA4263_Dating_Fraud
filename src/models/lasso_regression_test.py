@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 # Load the dataset
-file_path = "C:/Users/xembr/DSA4263_Dating_Fraud/data/processed/combined_profiles_sorted.xlsx"
+file_path = "../../data/processed/combined_profiles_sorted.xlsx"
 data = pd.read_excel(file_path)
 
 # Separate features and target variable
