@@ -34,11 +34,11 @@ if __name__ == "__main__":
     face_image_paths = df['image_path']
 
     # Load models
-    encoder = load("models/ohe_encoder.joblib")
-    bow_vectorizer = load("models/bow_vectorizer.joblib")
-    LR = load("models/logistic_regression_trained.joblib")
-    face_model = load_model("models/base_model_best.h5")
-    face_model.load_weights("models/base_model_best.weights.h5")
+    encoder = load("../models/ohe_encoder.joblib")
+    bow_vectorizer = load("../models/bow_vectorizer.joblib")
+    LR = load("../models/logistic_regression_trained.joblib")
+    face_model = load_model("../models/base_model_best.h5")
+    face_model.load_weights("../models/base_model_best.weights.h5")
 
     # Predict using profile model
     X_test_ohe = encoder.transform(profile_features.drop(['description'], axis=1))

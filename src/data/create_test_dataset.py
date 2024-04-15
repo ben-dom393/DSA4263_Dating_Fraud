@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 
 random.seed(42)
 
-test_profiles = pd.read_csv("../../data/processed/test_profiles.csv")
+test_profiles = pd.read_csv("../data/processed/test_profiles.csv")
 scam_profiles_ratio = 0.1
 
 # Profiles #
@@ -38,8 +38,8 @@ fake_profiles_for_real_images_idx, fake_profiles_for_fake_images_idx =\
 # Images #
 # ------------------------------ #
 # Directories containing images
-real_face_directory = '../../data/processed/test_real'
-fake_face_directory = '../../data/processed/test_fake'
+real_face_directory = '../data/processed/test_real'
+fake_face_directory = '../data/processed/test_fake'
 
 # list all image files in the directories
 real_images_list = [f for f in os.listdir(real_face_directory) if os.path.isfile(os.path.join(real_face_directory, f))]
@@ -91,4 +91,4 @@ final_test_dataset = test_profiles.dropna(axis=0, how='any')
 # # print(test_profiles.groupby(['scam', 'face_fake']).size())
 
 # save to csv
-final_test_dataset.to_csv("../../data/processed/final_test_dataset.csv", index=False)
+final_test_dataset.to_csv("../data/processed/final_test_dataset.csv", index=False)
