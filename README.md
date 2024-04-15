@@ -15,7 +15,7 @@ git clone https://github.com/ben-dom393/DSA4263_Dating_Fraud.git
 git clone git@github.com:ben-dom393/DSA4263_Dating_Fraud.git
 ```
 
-- Cd into the directory
+- Cd into directory
 ```bash
 cd DSA4263_Dating_Fraud
 ```
@@ -46,14 +46,18 @@ source datingfraud/bin/activate
 ``` bash
 $ pip install -r requirements
 ```
-4. Run the prediction
+4. cd into src directory
 ``` bash
-python src/models/final_model.py <path/to/dataset> [--output_path path/to/output/dir/]
+cd src
+```
+5. Run the prediction
+``` bash
+python models/final_model.py <path/to/dataset> [--output_path path/to/output/dir/]
 ```
 
 eg.
 ``` bash
-python src/models/final_model.py data/processed/final_test_dataset.csv
+python models/final_model.py ../data/processed/final_test_dataset.csv --output_path ./
 ```
 
 
