@@ -34,7 +34,7 @@ source .venv/bin/activate
 ```
 3. Install required packages and dependencies
 ``` bash
-$ pip install -r requirements
+$ pip install -r requirements.txt
 ```
 4. cd into src directory
 ``` bash
@@ -61,21 +61,16 @@ python models/final_model.py ../data/processed/final_test_dataset.csv --output_p
 │   ├── interim
 │   ├── processed
 │   └── raw
-├── Dockerfile
 ├── models
 ├── notebooks
 ├── references
 ├── requirements.txt
-├── src               
-│    ├── __init__.py
-│    ├── data
-│    │   └── make_dataset.py
-│    ├── features
-│    │   └── build_features.py
-│    ├── models       
-│    │   ├── predict_model.py
-│    │   └── train_model.py
-│    └── visualization
-│        └── visualize.py
-└── .dockerignore
+└── src               
+    ├── __init__.py
+    ├── data
+    │   ├── combine_raw_profile_data.py
+    │   └── create_test_dataset.py
+    ├── models       
+        ├── final_model.py
+        ├── ...
 ```
