@@ -23,16 +23,6 @@ cd DSA4263_Dating_Fraud
 ---
 
 It is recommended to set up a virtual environment or use docker to replicate the project.
-### Docker
-1. Build the docker image
-``` bash
-docker build -t dsa4263 .
-```
-2. Run a container from the image
-``` bash
-docker run dsa4263
-```
-
 ### Virtual environment
 1. Create virtual environment
 ``` bash
