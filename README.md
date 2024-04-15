@@ -1,8 +1,4 @@
-# Overview
-
-*add real and AI images and example of profile*
-
-## Getting started
+# Getting started
 
 - Clone this repository
 
@@ -23,7 +19,7 @@ cd DSA4263_Dating_Fraud
 ---
 
 It is recommended to set up a virtual environment or use docker to replicate the project.
-### Virtual environment
+## Virtual environment
 1. Create virtual environment
 ``` bash
 python3 -m venv .venv
@@ -52,7 +48,7 @@ python models/final_model.py ../data/processed/final_test_dataset.csv --output_p
 
 
 
-## Directory structure
+# Directory structure
 
 ```
 ├── LICENSE
