@@ -34,7 +34,7 @@ source .venv/bin/activate
 ```
 3. Install required packages and dependencies
 ``` bash
-$ pip install -r requirements
+$ pip install -r requirements.txt
 ```
 4. cd into src directory
 ``` bash
