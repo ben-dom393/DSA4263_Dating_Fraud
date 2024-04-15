@@ -61,21 +61,20 @@ python models/final_model.py ../data/processed/final_test_dataset.csv --output_p
 │   ├── interim
 │   ├── processed
 │   └── raw
-├── Dockerfile
 ├── models
 ├── notebooks
 ├── references
 ├── requirements.txt
-├── src               
-│    ├── __init__.py
-│    ├── data
-│    │   └── make_dataset.py
-│    ├── features
-│    │   └── build_features.py
-│    ├── models       
-│    │   ├── predict_model.py
-│    │   └── train_model.py
-│    └── visualization
-│        └── visualize.py
-└── .dockerignore
+└── src               
+    ├── __init__.py
+    ├── data
+    │   └── make_dataset.py
+    ├── features
+    │   └── build_features.py
+    ├── models       
+    │   ├── predict_model.py
+    │   └── train_model.py
+    └── visualization
+        └── visualize.py
+
 ```
