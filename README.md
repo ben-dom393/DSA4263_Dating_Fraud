@@ -36,11 +36,11 @@ docker run dsa4263
 ### Virtual environment
 1. Create virtual environment
 ``` bash
-python3 -m venv datingfraud
+python3 -m venv .venv
 ```
 2. Activate the virtual environment
 ``` bash
-source datingfraud/bin/activate
+source .venv/bin/activate
 ```
 3. Install required packages and dependencies
 ``` bash
