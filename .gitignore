@@ -5,4 +5,5 @@ bin/
 *Zone.Identifier
 *.csv
 *.jpg
+*.png
 **/.DS_Store
