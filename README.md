@@ -68,13 +68,9 @@ python models/final_model.py ../data/processed/final_test_dataset.csv --output_p
 └── src               
     ├── __init__.py
     ├── data
-    │   └── make_dataset.py
-    ├── features
-    │   └── build_features.py
+    │   ├── combine_raw_profile_data.py
+    │   └── create_test_dataset.py
     ├── models       
-    │   ├── predict_model.py
-    │   └── train_model.py
-    └── visualization
-        └── visualize.py
-
+        ├── final_model.py
+        ├── ...
 ```
