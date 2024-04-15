@@ -46,8 +46,8 @@ real_images_list = [f for f in os.listdir(real_face_directory) if os.path.isfile
 fake_images_list = [f for f in os.listdir(fake_face_directory) if os.path.isfile(os.path.join(fake_face_directory, f))]
 
 # sample 
-real_images_paths = [(os.path.join(real_face_directory, f), 0) for f in random.choices(real_images_list, k=num_real_profiles)]
-fake_images_paths = [(os.path.join(fake_face_directory, f), 1) for f in random.choices(fake_images_list, k=num_to_extract*2)]
+real_images_paths = [os.path.join(real_face_directory, f) for f in random.choices(real_images_list, k=num_real_profiles)]
+fake_images_paths = [os.path.join(fake_face_directory, f) for f in random.choices(fake_images_list, k=num_to_extract*2)]
 
 real_image_for_real_profiles, real_image_for_fake_profiles =\
     train_test_split(real_images_paths, test_size=num_to_extract, random_state=42)
@@ -61,23 +61,29 @@ fake_image_for_real_profiles, fake_image_for_fake_profiles =\
 # ------------------------------ #
 # add column "image_path" to the profiles
 test_profiles.insert(0, 'image_path', None)
-
-print("real_profiles_real_images size: ", len(real_profiles_for_real_images_idx))
-print("real_image_for_real_profiles size: ", len(real_image_for_real_profiles))
+test_profiles.insert(1, 'face_fake', None)
 
 # real profiles with real images
 test_profiles.loc[real_profiles_for_real_images_idx, 'image_path'] =\
     real_image_for_real_profiles
+test_profiles.loc[real_profiles_for_real_images_idx, 'face_fake'] = 0
 
 # real profiles with fake images
 test_profiles.loc[real_profiles_for_fake_images_idx, 'image_path'] =\
     fake_image_for_real_profiles
+test_profiles.loc[real_profiles_for_fake_images_idx, 'face_fake'] = 1
 
 # fake profiles with real images
 test_profiles.loc[fake_profiles_for_real_images_idx, 'image_path'] =\
     real_image_for_fake_profiles
+test_profiles.loc[fake_profiles_for_real_images_idx, 'face_fake'] = 0
 
 # fake profiles with fake images
 test_profiles.loc[fake_profiles_for_fake_images_idx, 'image_path'] =\
     fake_image_for_fake_profiles
+test_profiles.loc[fake_profiles_for_fake_images_idx, 'face_fake'] = 1
 
+# print(test_profiles.groupby(['scam', 'face_fake']).size())
+
+# save to csv
+test_profiles.to_csv("../../data/processed/final_test_dataset.csv", index=False)
