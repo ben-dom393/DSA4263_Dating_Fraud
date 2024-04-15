@@ -14,18 +14,18 @@ def load_images(image_paths):
     return np.array(images)
 
 # Load combined dataset
-df = pd.read_csv("../data/processed/sample_combined_csv[to_delete_later].csv")
+df = pd.read_csv("../../data/processed/final_test_dataset.csv")
 
 # Separate features for both models
-profile_features = df.drop(columns=['profile_scam', 'image_path', 'face_fake', 'age', 'location'])
+profile_features = df.drop(columns=['scam', 'image_path', 'face_fake', 'age', 'location'])
 face_image_paths = df['image_path']
 
 # Load models
-encoder = load("../models/ohe_encoder.joblib")
-bow_vectorizer = load("../models/bow_vectorizer.joblib")
-LR = load("../models/logistic_regression_trained.joblib")
-face_model = load_model("../models/base_model_best.h5")
-face_model.load_weights("../models/base_model_best.weights.h5")
+encoder = load("../../models/ohe_encoder.joblib")
+bow_vectorizer = load("../../models/bow_vectorizer.joblib")
+LR = load("../../models/logistic_regression_trained.joblib")
+face_model = load_model("../../models/base_model_best.h5")
+face_model.load_weights("../../models/base_model_best.weights.h5")
 
 # Predict using profile model
 X_test_ohe = encoder.transform(profile_features.drop(['description'], axis=1))
@@ -46,7 +46,7 @@ weighted_combined_prob = 0.4 * profile_pred_prob + 0.6 * face_pred_prob
 
 # Output combined results
 results_df = pd.DataFrame({
-    'true_profile_scam': df['profile_scam'],
+    'true_profile_scam': df['scam'],
     'profile_prob': profile_pred_prob,
     'true_face_fake': df['face_fake'],
     'face_prob': face_pred_prob,
